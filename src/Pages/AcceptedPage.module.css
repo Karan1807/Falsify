@@ -1,0 +1,128 @@
+.form1 {
+  width: 495px;
+  height: 482px;
+  margin-top: 100px;
+  background: rgba(60, 60, 67, 0.3);
+  border: 1px solid #ffffff;
+  backdrop-filter: blur(35.6347px);
+  border-radius: 16px;
+}
+.choose {
+  text-align: center;
+  color: #fff;
+  font-family: "Manrope", sans-serif;
+  padding: 0.56rem;
+  font-size: 24px;
+}
+.ConnectWalletBtn {
+  padding: 10.625px 17px;
+  width: 200px;
+  height: 51px;
+  margin-top: 155px;
+  margin-left: 145px;
+  background: linear-gradient(91.97deg, #06fff0 4.03%, #0025ce 102.82%);
+  box-shadow: 0px 1.0625px 1.0625px rgba(0, 0, 0, 0.08);
+  border-radius: 13.8125px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 160%;
+  color: #ffffff;
+  border: none;
+}
+.Uploaddatabtn {
+  padding: 10.625px 17px;
+  width: 200px;
+  height: 51px;
+  margin-top: 320px;
+  margin-left: 145px;
+  background: linear-gradient(91.97deg, #06fff0 4.03%, #0025ce 102.82%);
+  box-shadow: 0px 1.0625px 1.0625px rgba(0, 0, 0, 0.08);
+  border-radius: 13.8125px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 160%;
+  color: #ffffff;
+  border: none;
+}
+.connectwallet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  position: absolute;
+  width: 561px;
+  height: 171px;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+}
+.inputStyle {
+  box-sizing: border-box;
+  position: absolute;
+  width: 427px;
+  height: 69px;
+  margin-left: 35px;
+  margin-top: 65px;
+  background: transparent;
+  color: #fff;
+  font-family: "Manrope";
+  border: 1.23214px solid #d8dadc;
+  border-radius: 12.3214px;
+}
+.inputStyles {
+  box-sizing: border-box;
+  position: absolute;
+  width: 427px;
+  height: 69px;
+  margin-left: 35px;
+  margin-top: 230px;
+  background: transparent;
+  color: #fff;
+  border: 1.23214px solid #d8dadc;
+  border-radius: 12.3214px;
+}
+.inputStyle::placeholder {
+  position: absolute;
+  width: auto;
+  height: 25px;
+  left: 28px;
+  top: 22px;
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.7143px;
+  color: #fff;
+}
+.inputStyles::placeholder {
+  position: absolute;
+  width: auto;
+  height: 25px;
+  left: 28px;
+  top: 22px;
+  font-family: "Manrope", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19.7143px;
+  color: #fff;
+}
+
+.inputStyle:nth-child(2) {
+  position: absolute;
+  top: 163px;
+}
+.uploaddata {
+  display: flex;
+  justify-content: center;
+  margin-top: 125px;
+  padding: 0px;
+  position: absolute;
+  width: 561px;
+  height: 171px;
+}
