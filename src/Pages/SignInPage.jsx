@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./SignInPage.module.css";
 import firebase from "../Components/firebase";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ export const SignInPage = () => {
   const [fieldemail, setemail] = useState("");
   const [fieldgstno, setgstno] = useState("");
   const [fieldlicense, setlicense] = useState("");
-  const [fieldaccept, setaccept] = useState("true");
+  const [fieldaccept, setaccept] = useState("false");
   const db = firebase.database();
   const navigate = useNavigate();
   // const acceptRef = firebase.database().ref("Manufacturer");
@@ -28,21 +28,22 @@ export const SignInPage = () => {
       accept: fieldaccept,
     };
     db.ref("Manufacturer").push(newData);
-
-    if (fieldaccept === "true") {
-      navigate("/AcceptedPage");
-    } else {
-      navigate("/WaitingPage");
-    }
+    navigate("/WaitingPage");
   };
+  useEffect(() => {
+    db.ref("Manufacturer").on("child_changed", (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
 
-  db.ref("Manufacturer").on("child_changed", (snapshot) => {
-    const data = snapshot.val();
-
-    if (data.accept !== fieldaccept) {
-      setaccept(data.accept);
-    }
-  });
+      if (data.accept === "true") {
+        setaccept("true");
+        navigate("/AcceptedPage");
+      } else if (data.accept === "false") {
+        setaccept("false");
+        navigate("/WaitingPage");
+      }
+    });
+  }, []);
 
   return (
     <>

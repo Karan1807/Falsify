@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import QrReader from "react-qr-scanner";
 import Web3 from "web3";
 import Contractabi from "../Pages/storage_abi.json";
-import "./User.css";
+import "./Scanner.css";
 const contractAddress = "0x3039839a431ffA9f3F35Aa47bd4d4f0F575Ff88e";
 
 function Scanner(props) {
@@ -12,6 +12,8 @@ function Scanner(props) {
   const [isPresent, setIsPresent] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [qrData, setQrData] = useState([]);
+  const [result, setResult] = useState();
+  const [isSubmitted, setisSubmitted] = useState(false);
 
   const qrHandler = (data) => {
     if (data !== null) {
@@ -33,12 +35,14 @@ function Scanner(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setisSubmitted(true);
     await checkIfPresent(input);
   };
   const checkIfPresent = async (input) => {
     const web3 = new Web3("HTTP://127.0.0.1:7545"); // Connect to the blockchain network
     const contract = new web3.eth.Contract(Contractabi, contractAddress); // Create an instance of the smart contract
     const result = await contract.methods.isPresent(input).call(); // Call the smart contract method that checks if the input exists
+    setResult(result);
     if (result) {
       console.log(`${input} exists in the blockchain network`);
     } else {
@@ -61,12 +65,12 @@ function Scanner(props) {
                   onScan={qrHandler}
                   style={{ width: "554px", heigth: "397px" }}
                 />
-                <button onClick={handleClick}>Close</button>
+                <button onClick={handleClick}>Close btn</button>
               </div>
             ) : (
               <img
                 className="scanner-1"
-                src={require("../Assets/Images/scannerimg.jpg")}
+                src={require("../Assets/Images/scanner_img.png")}
                 alt="scanner 1"
                 onClick={handleClick}
               />
@@ -87,26 +91,27 @@ function Scanner(props) {
                 />
               </div>
               <div>
-                <button type={"submit"}> Check Authenticity </button>
+                <button classname="launchbtn" launch-btn type={"submit"}>
+                  {" "}
+                  Check Authenticity{" "}
+                </button>
               </div>
             </form>
+            {isSubmitted && (
+              <>
+                <div>
+                  <h1 style={{ color: "white" }}>
+                    {result
+                      ? "This Product Is Original and Verified By Falsify"
+                      : "This Product Is Not Original and Verified By Falsify"}
+                  </h1>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
     </div>
-    // <div>
-    //   <form onSubmit={handleSubmit}>
-    //     <label>
-    //       Enter Text:
-    //       <input
-    //         type="text"
-    //         value={input}
-    //         onChange={(e) => setInput(e.target.value)}
-    //       />
-    //     </label>
-    //     <button type="submit">Check</button>
-    //   </form>
-    // </div>
   );
 }
 
