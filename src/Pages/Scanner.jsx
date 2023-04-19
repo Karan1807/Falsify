@@ -78,20 +78,52 @@ function Scanner(props) {
 
             <form onSubmit={{ handleSubmit }}>
               {qrData.map((data) => {
-                return <input id="setText" type="text" value={data.text} />;
+                return (
+                  <input
+                    style={{
+                      transform: "translate(100px, 300px)",
+                      boxSizing: "border-box",
+                      color: "#fff",
+                      position: "absolute",
+                      width: "427px",
+                      height: "69px",
+                      left: "0px",
+                      top: "0px",
+                      display: "flex",
+                      textAlign: "center",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "large",
+                      background: "transparent",
+                      border: "1.23214px solid #d8dadc",
+                      borderRadius: "12.3214px",
+                    }}
+                    id="setText"
+                    type="text"
+                    value={data.text}
+                  />
+                );
               })}
             </form>
 
             <form onSubmit={handleSubmit}>
               <div>
-                <input
-                  id="setText"
-                  type="text"
-                  onChange={(e) => setInput(e.target.value)}
-                />
-              </div>
-              <div>
-                <button classname="launchbtn" launch-btn type={"submit"}>
+                <button
+                  style={{
+                    transform: "translate(100px, -50px)",
+                    position: "absolute",
+                    height: "53px",
+                    width: "250px",
+                    background:
+                      "linear-gradient(91.97deg, #06fff0 4.03%, #0025ce 102.82%)",
+                    borderRadius: "13.8125px",
+                    color: "#fff",
+                    border: "none",
+                    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+                    fontSize: "1.25rem",
+                  }}
+                  type={"submit"}
+                >
                   {" "}
                   Check Authenticity{" "}
                 </button>
